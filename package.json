@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "mongodb-proxy-memcache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a memory cache implementation for mongodb-proxy",
   "keywords": [
     "mongodb-proxy cache"
