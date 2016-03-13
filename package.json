@@ -1,6 +1,6 @@
 {
 	"name": "mongodb-proxy-memcache",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "a memory cache implementation for mongodb-proxy",
 	"keywords": [
 		"mongodb-proxy cache"
@@ -18,11 +18,7 @@
 		"type": "git",
 		"url": "https://github.com/akonoupakis/mongodb-proxy-memcache.git"
 	},
-	"licenses": [
-		{
-			"type": "MIT"
-		}
-	],
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/akonoupakis/mongodb-proxy-memcache/issues",
 		"email": "konoupakis@gmail.com"
