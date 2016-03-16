@@ -4,6 +4,7 @@
 ![VERSION](https://img.shields.io/npm/v/mongodb-proxy-memcache.svg)
 ![DOWNLOADS](https://img.shields.io/npm/dt/mongodb-proxy-memcache.svg)
 [![ISSUES](https://img.shields.io/github/issues-raw/akonoupakis/mongodb-proxy-memcache.svg)](https://github.com/akonoupakis/mongodb-proxy-memcache/issues)
+[![BUILD](https://api.travis-ci.org/akonoupakis/mongodb-proxy-memcache.svg?branch=master)](http://travis-ci.org/akonoupakis/mongodb-proxy-memcache)
 ![LICENCE](https://img.shields.io/npm/l/mongodb-proxy-memcache.svg)
 
 [![NPM](https://nodei.co/npm/mongodb-proxy-memcache.png?downloads=true)](https://nodei.co/npm/mongodb-proxy-memcache/)
