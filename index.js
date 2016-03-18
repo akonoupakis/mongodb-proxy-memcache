@@ -1,94 +1,90 @@
-﻿var _ = require('underscore');
+﻿var _ = require('underscore')
 
 var Cache = function () {
-    this.cache = {};
-};
+  this.cache = {}
+}
 
 var getCacheObject = function (cache, str) {
-    var result = undefined;
+  var result
 
-    var strParts = str.split('.');
+  var strParts = str.split('.')
 
-    result = cache;
+  result = cache
 
-    if (str !== '') {
+  if (str !== '') {
+    var undef = false
+    _.each(strParts, function (part, i) {
+      if (!undef) {
+        if (result[part] !== undefined) {
+          result = result[part]
+        } else {
+          result = undefined
+          undef = true
+        }
+      }
+    })
+  }
 
-        var undef = false;
-        _.each(strParts, function (part, i) {
-
-            if (!undef) {
-                if (result[part] !== undefined) {
-                    result = result[part];
-                }
-                else {
-                    result = undefined;
-                    undef = true;
-                }
-            }
-
-        });
-    }
-
-    return result;
-};
+  return result
+}
 
 var createCacheObject = function (cache, str) {
-    var result = undefined;
+  var result
 
-    var strParts = str.split('.');
+  var strParts = str.split('.')
 
-    result = cache;
-    var undef = false;
+  result = cache
 
-    _.each(strParts, function (part, i) {
+  _.each(strParts, function (part, i) {
+    if (result[part] === undefined) {
+      result[part] = { }
+    }
 
-        if (result[part] === undefined)
-            result[part] = {};
+    result = result[part]
+  })
 
-        result = result[part];
-
-    });
-
-    return result;
-};
+  return result
+}
 
 Cache.prototype.add = function (key, value, cb) {
-    var parentKey = key.split('.').reverse().slice(1).reverse().join('.');
-    var currentKey = key.split('.').pop();
+  var parentKey = key.split('.').reverse().slice(1).reverse().join('.')
+  var currentKey = key.split('.').pop()
 
-    var obj = getCacheObject(this.cache, parentKey);
+  var obj = getCacheObject(this.cache, parentKey)
 
-    if (!obj)
-        obj = createCacheObject(this.cache, parentKey);
+  if (!obj) {
+    obj = createCacheObject(this.cache, parentKey)
+  }
 
-    obj[currentKey] = value;
+  obj[currentKey] = value
 
-    cb(null, value);
-};
+  cb(null, value)
+}
 
 Cache.prototype.get = function (key, cb) {
-    var obj = getCacheObject(this.cache, key);
+  var obj = getCacheObject(this.cache, key)
 
-    cb(null, obj);
-};
+  cb(null, obj)
+}
 
 Cache.prototype.purge = function (key, cb) {
-    var parentKey = key.split('.').reverse().slice(1).reverse().join('.');
-    var currentKey = key.split('.').pop();
+  var parentKey = key.split('.').reverse().slice(1).reverse().join('.')
+  var currentKey = key.split('.').pop()
 
-    var obj = getCacheObject(this.cache, parentKey);
+  var obj = getCacheObject(this.cache, parentKey)
 
-    if (obj)
-        delete obj[currentKey];
+  if (obj) {
+    delete obj[currentKey]
+  }
 
-    cb(null, null);
-};
+  cb(null, null)
+}
 
 Cache.prototype.getKeys = function (key, cb) {
-    var obj = getCacheObject(this.cache, key);
-    var keys = _.keys(obj);
+  var obj = getCacheObject(this.cache, key)
+  var keys = _.keys(obj)
 
-    cb(null, keys);
-};
+  cb(null, keys)
+}
 
-module.exports = Cache;
+module.exports = Cache
